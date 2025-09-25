@@ -30,9 +30,10 @@ ENV LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 # Build directory
 WORKDIR /usr/local/src
 
-# Clone PostgreSQL source (shallow) and checkout branch/tag
+# Clone PostgreSQL source
 RUN git clone https://git.postgresql.org/git/postgresql.git
 
+# PostgreSQL source directory
 WORKDIR /usr/local/src/postgresql
 
 # Ensure python3 (system) is used; PL/Python requires libpython to be shared.
@@ -40,7 +41,7 @@ WORKDIR /usr/local/src/postgresql
 ENV PYTHON=python3
 
 # Configure, build and install
-# --enable-cassert / --enable-debug optional for developer builds (slower but useful)
+# --enable-cassert / --enable-debug optional for developer builds (optional: slower but useful)
 RUN mkdir /usr/local/src/postgresql/build_dir \
     && cd build_dir \
     && /usr/local/src/postgresql/configure \
