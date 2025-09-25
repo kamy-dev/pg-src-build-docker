@@ -35,9 +35,11 @@ podman build -t pg-src-plpy:latest .
 podman run -d -it --name postgres-container -p 5432:5432 -v pg_data:/pgsql -v pg_wal:/wal pg-src-plpy:latest
 ```
 
-### 接続方法
+### 3. 接続方法
 
 コンテナ起動後、以下の方法で PostgreSQL に接続できます：
+
+#### Docker の場合
 
 ```bash
 # コンテナ内でpsqlを使用
@@ -45,7 +47,19 @@ docker exec -it postgres-container bash
 su - postgres
 psql
 
-# または外部から接続
+# または外部から接続 (ローカルにpsqlがインストールされていること)
+psql -h localhost -p 5432 -U postgres
+```
+
+#### Podman の場合
+
+```bash
+# コンテナ内でpsqlを使用
+podman exec -it postgres-container bash
+su - postgres
+psql
+
+# または外部から接続 (ローカルにpsqlがインストールされていること)
 psql -h localhost -p 5432 -U postgres
 ```
 
