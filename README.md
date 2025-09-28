@@ -11,6 +11,10 @@ PostgreSQL のオープンソース貢献にも利用できる コンテナ 環�
 -   PL/Python 拡張のサポート
 -   開発・テスト用の環境構築
 
+詳細は以下の記事をご覧ください。
+
+### [Qiita - PostgreSQL のソースコードからのビルド完全ガイド](https://qiita.com/Kamy-dev/items/55d5d7db44ac4216d573)
+
 ## 使用方法
 
 ### 1. Docker の場合
