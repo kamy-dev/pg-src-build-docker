@@ -52,7 +52,12 @@ EXPOSE 5432
 
 USER postgres
 
-CMD ["/bin/bash", "-c", "if [ ! -d /pgsql/PG_VERSION ]; then /opt/pgsql/bin/initdb --no-locale --encoding=utf8 -U postgres -D /pgsql -X /wal; fi && exec /opt/pgsql/bin/postgres -D /pgsql"]
+CMD ["/bin/bash", "-c", "\
+  if [ ! -d /pgsql/PG_VERSION ]; then \
+     /opt/pgsql/bin/initdb --no-locale --encoding=utf8 -U postgres -D /pgsql -X /wal; \
+  fi && \
+  exec /opt/pgsql/bin/postgres -D /pgsql \
+       -c unix_socket_directories='/tmp'"]
 
 # ===============================
 # 2. Production stage
